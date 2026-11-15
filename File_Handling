@@ -1,0 +1,488 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FilesDemo {
+
+	public static void main(String[] args) throws IOException {
+// Create file
+		File f=new File("Sree.txt");
+		 if(f.createNewFile()) {
+			 System.out.println("File created"+f.getName());
+		 }
+		 else {
+			 System.out.println("File not created.."+f.getName());
+		 }
+		 
+//		 Writing 
+		 
+		 String str[]= {"Hello Jayasree, Hello Anusree How are you guys?  🎁🎀👕"};
+		 FileOutputStream fos=new FileOutputStream(f);
+		 DataOutputStream dos=new DataOutputStream(fos);
+		 
+		 dos.writeUTF("Hello Sree..");
+		 for(String s:str) {
+		 dos.writeUTF(s);
+		 dos.flush();
+
+		 }
+		 dos.writeUTF("Hello dears....");
+		 
+//		 ReadUtf
+		 FileInputStream fis=new FileInputStream(f);
+		 DataInputStream dis=new DataInputStream(fis);
+		 while(fis.available()>0) {
+			 String read=dis.readUTF();
+			 System.out.println(read);
+			 
+		 }
+		 
+        if(f.exists()) {
+			if(f.delete()) {
+						
+			System.out.println("File name: "+f.getName());
+			System.out.println("File path: "+f.getPath());
+			System.out.println("File path: "+f.getAbsolutePath());
+			System.out.println("Read: "+f.canRead());
+			System.out.println("Write: "+f.canWrite());
+			System.out.println("Size:"+f.length());
+			
+		}
+        }
+        else {
+         	System.out.println("No such a file exist..");
+        }
+		 
+		 
+//		 append
+
+		 
+	}
+
+}
+===========================================================================
+
+package FileDemo;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class File_tasks {
+
+	public static void main(String[] args) throws IOException {
+		
+//		file handling
+		
+		
+//		1. create a new file
+		
+		File v=new File("File.text");
+		if(v.createNewFile()) {
+			System.out.println("File Created successfully"+v.getName());
+		}
+		else {
+			System.out.println("File not Created"+v.getName());
+		}
+		
+//		2. Write content on file
+		
+		String str[]= {"id","name","mark"};
+		FileOutputStream fos=new FileOutputStream(v);
+		DataOutputStream dos=new DataOutputStream(fos);
+		
+		for(String s:str) {
+		dos.writeUTF(s);
+		}
+		
+//		File 
+		
+		dos.writeUTF("app");
+		
+//		3. read content from file
+		
+		FileInputStream fis=new FileInputStream(v);
+		DataInputStream dis=new DataInputStream(fis);
+		while(dis.available()>0)
+		{
+			String c=dis.readUTF();
+			System.out.println("Content From File :"+c 	);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}
+
+
+====================================================================================
+
+
+package FileDemo;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileDemo_Practice {
+
+	public static void main(String[] args) throws IOException {
+ 
+		
+		File f=new File("Vignesh.txt");
+		if(f.createNewFile()) { 
+			System.out.println("File Created Successfully..👍"+f.getName());
+		}
+		else {
+			System.out.println("File not found"+f.getName());
+		}
+	
+		
+		
+		String arr[]= {"hello","hai"};
+		FileOutputStream fos=new FileOutputStream(f);
+		DataOutputStream dos=new DataOutputStream(fos);
+		for(String v: arr) {
+			
+		dos.writeUTF(v);
+		dos.flush();
+		}
+		
+		
+		FileInputStream fis=new FileInputStream(f);
+		DataInputStream dis=new DataInputStream(fis);
+		
+		while(dis.available()>0) {
+			System.out.println(dis.readUTF());
+		}
+		
+		
+		if(f.exists()) {
+			if(f.delete()) {
+				System.out.println(f.canRead());
+				System.out.println(f.canWrite());
+				System.out.println(f.getAbsolutePath());
+				System.out.println(f.length());
+			}
+		}
+		else {package FileDemo;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileHandlingDemo {
+
+	public static void main(String[] args) throws IOException {
+ 
+		
+		
+//		file handling
+		
+		
+//		1. create a new file
+		File f=new File("Ranjith.txt");
+		
+		if(f.createNewFile()) {
+			System.out.println("File created successfully.."+f.getName());
+		}
+		else {
+			System.out.println("File not created"+f.getName());
+		}
+		
+		
+//		2. Write content on file
+	
+		
+		String str[]= {"Hello Vicky and Ranjith, Also Meiyabharathi...","How are all guys? 😎👌"};
+		
+		
+		FileOutputStream fos=new FileOutputStream(f);
+		DataOutputStream dos=new DataOutputStream(fos);
+		
+		for(String s: str) {
+			dos.writeUTF(s);
+//			WriteUTF  --(UTF =  TRANSFORMATION FORMAT) is for translatUNICODEing and 
+//			writing the content(including emoji,different language script,scientific expression)
+			
+			
+			
+		}
+		
+		
+//		3. read content from file
+		
+		FileInputStream fis=new FileInputStream(f);
+		DataInputStream dis=new DataInputStream(fis);
+		while(fis.available()>0) {
+			
+			String c=dis.readUTF();
+			System.out.println("Content from File: "+c);
+			
+		}
+		
+//		4. delete file
+		
+		
+		if(f.exists()) {//check file available 
+			if(f.delete()) {//to delete file
+				System.out.println("File Name: "+f.getName());
+				
+				System.out.println("File Path: "+f.getAbsolutePath());
+				
+				System.out.println("Size: "+f.length());
+				
+				System.out.println("Readable?"+f.canRead());
+				System.out.println("Can Write"+f.canWrite());
+				
+				
+				
+			}
+			
+			
+		}
+		
+		
+		
+		
+		else {
+			System.out.println("No such file exists...");
+		}
+		
+		
+				
+		
+		
+	}
+
+}
+==================================
+
+
+
+
+			System.out.println("No Such file found");
+		}		
+		
+	}
+
+}
+===============================================================================================
+
+
+package FileDemo;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileTasks {
+
+	public static void main(String[] args) throws IOException {
+ 
+		
+		Scanner sc=new Scanner(System.in);
+		File f=new File("Student.txt");
+		
+//		write data,append
+		
+//		1. create a new file
+		FileOutputStream fos=new FileOutputStream(f,true);// here 'true' keyword mentions for append
+		DataOutputStream dos=new DataOutputStream(fos);
+		
+	
+		System.out.println("Enter Id no:");
+		int id=sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Enter Name:");
+		String name=sc.nextLine();
+		
+		System.out.println("Enter marks: ");
+		float marks=sc.nextFloat();
+		
+		dos.writeInt(id);
+		dos.writeUTF(name);
+		dos.writeFloat(marks);
+		
+		
+//		read data
+		FileInputStream fis=new FileInputStream(f);
+		DataInputStream dis=new DataInputStream(fis);
+		
+		try {
+			
+			while(true) {
+				id=dis.readInt();
+				name=dis.readUTF();
+				marks=dis.readFloat();
+				
+				System.out.println("Id Number: "+id);
+				System.out.println("Name: "+name);
+				System.out.println("Marks: "+marks);
+			}
+			
+		}
+		catch(EOFException e) {
+			System.out.println(e);
+			
+		}
+		
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}
+===========================================================================================
+
+package FileDemo;
+
+import java.util.Scanner;
+
+public class Recall1 {
+
+	public static void main(String[] args) {
+ 
+		
+//		for loop
+		
+		
+//		jumping statement - break,continue
+		
+//		for(int i=1;i<=10;i++) {
+//			
+//			if (i==4) {
+////				break;
+//				continue;//skips the current iteration
+//			}
+//			System.out.println(i);
+//		}
+//	}
+
+		
+//		note: Input get from user
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Your choice");
+		
+//		integer value - rounded value (countable value) - nextInt()
+//		float value - decimel - nextFloat()
+		float a=sc.nextFloat();
+		System.out.println("Answer is "+a);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+}
+}
+
+=========================================================
+
+package FileDemo;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Task1 {
+
+    public static void main(String[] args) throws IOException {
+
+        Scanner sc = new Scanner(System.in);
+
+        File f = new File("vignesh.txt");
+
+        FileOutputStream fos = new FileOutputStream(f,true);
+        DataOutputStream dos = new DataOutputStream(fos);
+
+        System.out.println("Enter Id No:");
+        int id_no = sc.nextInt();
+        sc.nextLine();  
+
+        System.out.println("Enter Your Mark:");
+        String mark = sc.nextLine();
+
+        System.out.println("Enter Your Name:");
+        String name = sc.nextLine();
+
+        // Writing
+        dos.writeUTF(mark);
+        dos.writeUTF(name);
+        dos.writeInt(id_no);
+
+        dos.close();
+
+        // Reading
+        FileInputStream fis = new FileInputStream(f);
+        DataInputStream dis = new DataInputStream(fis);
+
+        try {
+            while (true) {
+
+                mark = dis.readUTF();
+                name = dis.readUTF();
+                id_no = dis.readInt();
+
+                System.out.println("*******************************");
+                System.out.println("Id No : " + id_no);
+                System.out.println("Name  : " + name);
+                System.out.println("Mark  : " + mark);
+                System.out.println("*******************************");
+            }
+        } catch (EOFException e) {
+            System.out.println("End of file reached.");
+        }
+
+        dis.close();
+        sc.close();
+    }
+}
